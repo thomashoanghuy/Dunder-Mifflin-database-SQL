@@ -1,0 +1,36 @@
+-- QUERY TO DELETE ENTRIES FROM TABLES THAT HAVE REFERENCE AS FOREIGN KEYS FOR OTHER TABLE
+-- When you delete one row (which includes FOREIGN KEY to another table)
+-- ON DELETE CASCADE : -- the other table will also remove the row that has that KEY
+-- ON DELETE SET NULL : means other table will set the value of that foreign key as NULL
+
+
+SELECT * FROM branch;
+SELECT * FROM employee;
+SELECT * FROM branch_supplier;
+
+INSERT INTO employee VALUES(102, 'Michael', 'Scott', '1964-03-15', 'M', 75000, 100, NULL);
+
+ALTER TABLE employee
+ADD FOREIGN KEY(super_id)
+REFERENCES employee(emp_id)
+ON DELETE SET NULL;
+
+DELETE from employee
+WHERE emp_id = 102;
+-- any employees that are have supervisor 102 , now have been set to NULL, because we 
+-- delete emp_id= 102 
+
+DELETE FROM branch
+WHERE branch_id = 2;
+-- when you delete branch_id =2 , all the suppliers related to branch_id = 2, also get deleted
+
+-- When to use ON DELETE SET NULL vs ON DELETE CASCADE?
+
+-- SET NULL is when the foreign key is not the essential column (aka. PRIMARY key) of the affected table
+-- For eg.(1) above, when we delete emp_id=2 above, affected column is branch table mgr_id and column super_id of the employee table
+-- When we delete emp_id=2, the affected table can set what was previously emp_id=2, as NULL
+
+-- ON DELETE CASCADE is when foreign key is actually the primary key column of the affect table
+-- Eg.(2), where branch_id column is both the primary key of branch table, and branch supplier table, 
+-- Hence when we delete branch_id=2 from branch table, branch_supplier table cannot set their primary key to NULL 
+-- PRIMARY KEY CANNOT BE NULL, hence we have to set it as CASCADE, (means delete primary key branch_id=2 from both tables)  
