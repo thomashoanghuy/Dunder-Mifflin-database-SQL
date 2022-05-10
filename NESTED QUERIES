@@ -1,0 +1,21 @@
+SELECT employee.first_name, employee.last_name
+FROM employee
+WHERE employee.emp_id IN (
+	SELECT emp_id
+	FROM works_with
+	WHERE works_with.total_sales > 30000
+);
+
+-- the inner SELECT is to find out the emp_id that makes sales > 30000
+-- while the outer SELECT is to find the employee first_name and last_name using the
+-- WHERE as condition for the emp_id IN the result of the inner SELECT
+
+-- find ALL clients who are handled by the branch which Michael Scott manages
+SELECT client.client_name
+FROM client
+WHERE client.branch_id = (
+	SELECT branch.branch_id 
+	FROM branch
+	WHERE branch.mgr_id = 102
+    LIMIT 1 -- (for example emp_id 102 can manage multiple branches, hence we only limit to 1)
+);
