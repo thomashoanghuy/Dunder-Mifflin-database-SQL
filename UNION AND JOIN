@@ -1,0 +1,57 @@
+-- Union in SQL - an operator to join results of 2 queries
+-- Note: the results of each query must have same number of columns
+-- Must have similar data types
+
+-- Find a list of employee in branch names
+SELECT first_name AS Company_Names
+FROM employee
+UNION
+SELECT branch_name
+FROM branch
+UNION
+SELECT client_name
+FROM client;
+
+SELECT client_name, client.branch_id
+FROM client
+UNION
+SELECT supplier_name, branch_supplier.branch_id
+FROM branch_supplier;
+
+-- Find a list of all revenue and expense by the company 
+SELECT salary
+FROM employee
+UNION 
+SELECT total_sales
+FROM works_with;
+
+
+-- JOINS in SQL : use to combine different results from different queries on different tables
+-- so long as these shared related column
+-- 1) General JOIN ( Inner JOIN )
+-- Find all the branches name and the name of their managers
+INSERT INTO branch VALUES(4, 'Buffalo', NULL, NULL);
+
+SELECT employee.emp_id, employee.first_name, branch.branch_name
+FROM employee
+JOIN branch
+ON employee.emp_id = branch.mgr_id; 
+-- query seeks 3 columns employee id, employee first name from employee tables
+-- and branch name from branch table. JOIN branch = Join Employee table and Branch table with same column 
+-- (the foreign key of branch table is referred to emp_id on employee table)
+-- ON (this is condition for the JOIN) the emp_id that matches the mgr_id , will appear in the result table
+
+SELECT employee.emp_id, employee.first_name, branch.branch_name
+FROM employee
+RIGHT JOIN branch
+ON employee.emp_id = branch.mgr_id; -- this is the condition for the join
+-- employee table is considered a left table and the branch is considered right table
+
+-- LEFT JOIN will return ALL rows of the left table (first_name, last_name) of the employee table
+-- Those emp_id that do not match any mgr_id on the right table, will return NULL 
+
+-- RIGHT JOIN will return all the rows of the right table (branch_name)
+-- Those branch_id that do not match any emp_id on the left table, will return NULL 
+
+-- FULL OUTER JOIN ( not applicable in mySQL), will return all the rows of the left 
+-- AND the right tables, no matter whether the condition emp_id = mgr_id is met or not
