@@ -1,0 +1,29 @@
+SELECT * FROM works_with;
+SELECT * from branch;
+
+-- find all employees by sex then by first name, then by last name ( ORDER BY = sorting alphabetically) 
+SELECT * from employee
+ORDER BY sex, first_name , last_name;
+
+-- Find the first and last name of all employee
+SELECT first_name, last_name from employee;
+
+-- query first and last name of employee but name the columns of the results as Surname and Forename
+SELECT first_name AS Forename , last_name AS Surname from employee;
+
+-- Query for how many types of distinct classes in 1 table column. (for example genders =2 , M and F)
+SELECT DISTINCT branch_id from employee;
+
+-- HOW TO UPDATE TABLE
+UPDATE employee
+SET salary = 78000
+WHERE emp_id = 106;
+
+--HOW TO DELETE / MODIFY TABLE
+DELETE from employee
+WHERE emp_id = 102;
+
+ALTER TABLE employee
+ADD FOREIGN KEY(super_id)
+REFERENCES employee(emp_id)
+ON DELETE SET NULL;
