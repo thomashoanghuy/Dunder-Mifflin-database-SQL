@@ -1,0 +1,22 @@
+-- Wildcards SQL similar to Regex: 
+-- %text means to search for any strings that ends with 'text' 
+-- Wildcards _ = represent ONE characters
+-- Wilrdcards % = represents multiple characters
+
+
+SELECT * 
+FROM client
+WHERE client_name LIKE '%LLC';
+
+SELECT *
+FROM branch_supplier
+WHERE supplier_name LIKE '%Label%';
+
+-- Date / Month / Year - Search for employees that are born in October , in the table the birth day format is YYYY-MM-DD
+SELECT * 
+FROM employee
+WHERE birth_day LIKE '____-10%';
+
+SELECT *
+FROM client
+WHERE client_name LIKE '%school%';
