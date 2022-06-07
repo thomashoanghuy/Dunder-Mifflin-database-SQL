@@ -20,8 +20,8 @@ WHERE client.branch_id = (
     LIMIT 1 -- (for example emp_id 102 can manage multiple branches, hence we only limit to 1)
 );
 
--- if one manager manage more than 1 branch, we can return all the branch_id which 
--- he manages in 1 row , group by his employee_id
+-- if one manager manage more than 1 branch, we can return all the branch_name which 
+-- he manages in 1 row , group by his employee_id (manager_id) 
 
 SELECT manager_id, STRING_AGG(branch_name;;) branch_name
 FROM branch
