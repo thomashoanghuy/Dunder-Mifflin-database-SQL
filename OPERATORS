@@ -1,6 +1,14 @@
-# LIKE OPERATOR  SEARCH FOR TEXT CONTAINED IN Column name using '% <insert text >%'
+# LIKE OPERATOR : Search FOR TEXT CONTAINED IN Column name using '% <insert text >%'
 SELECT * FROM table WHERE name LIKE '% <insert text >%' ;
 
-#SEARCH for number contained in Column Name using IN operator
+#IN OPERATOR : Search for number contained in Column Name using IN operator
 
 SELECT * FROM table WHERE nameID IN ('1' , '2' ) ;
+
+#CASE OPERATOR : classify results into buckets
+SELECT name 
+CASE WHEN ( <insert condition , for eg. COST > 100 > ) THEN <insert result, for eg: Expensive> 
+ELSE 'cheap'
+END AS <name of new column>
+FROM table
+;
