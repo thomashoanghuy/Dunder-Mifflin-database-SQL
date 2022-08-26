@@ -12,3 +12,8 @@ ELSE 'cheap'
 END AS <name of new column>
 FROM table
 ;
+
+
+#SELECT TOP 10 of a list by using LIMIT
+#Elimminate duplication by SELECT DISTINCT
+SELECT * FROM table ORDER BY <name of another table> LIMIT 10
