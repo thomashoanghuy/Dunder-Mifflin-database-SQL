@@ -20,4 +20,5 @@ AGGREGATE (SUM / MIN / MAX / AVERAGE) usually be used with AS. Example: SELECT N
   
   
 2) For MySQL, when you wanna search by texts, DO NOT use "=" , use LIKE and '% <insert text> %' 
-SELECT * FROM table WHERE name = '%David%'
+SELECT * FROM table WHERE name = '%Thao%'
+if you wanna use "=" , you must indicate the table ( for example:   <table name>.name = "Thomas" ) 
