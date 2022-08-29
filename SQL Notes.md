@@ -1,5 +1,4 @@
-Sequence of SQL clauses
-
+1) Sequence of SQL clauses
 SELECT <specify the result you want> 
 
 FROM (name of left table) 
@@ -17,3 +16,8 @@ HAVING <similar to WHERE, a filter clause but CAN be used with aggregate functio
 ORDER BY <the condition to sort the results of the query from above, similar to GROUP BY, but can only used after HAVING>
   
 AGGREGATE (SUM / MIN / MAX / AVERAGE) usually be used with AS. Example: SELECT NAME, SUM(working_hours) AS <name_of_result> 
+  
+  
+  
+2) For MySQL, when you wanna search by texts, DO NOT use "=" , use LIKE and '% <insert text> %' 
+SELECT * FROM table WHERE name = '%David%'
