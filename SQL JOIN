@@ -30,7 +30,7 @@ ON employee.emp_id = branch.mgr_id; -- this is the condition for the join
 -- AND the right tables, no matter whether the condition emp_id = mgr_id is met or not
 
 --#Concept : You can join table with itself!!!
--- Imagine situation where you need to call for 2 columns from 1 single table, and further filter them on condition like variable on 1st column = variable on 2nd column
+-- Imagine situation where you need to call for 2 columns from 1 single table, and further filter them on condition such as Variable on 1st column = Variable on 2nd column
 -- Example: Select a member name from club member (cd.members) database which have introduced another members into the club.
 SELECT DISTINCT recs.firstname  , recs.surname ( # "recs" table surname and last name )
 FROM cd.members mems # Note: here cd.members mems = giving an alias "mems" to table cd.members
