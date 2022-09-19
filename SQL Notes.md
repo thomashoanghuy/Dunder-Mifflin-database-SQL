@@ -20,5 +20,11 @@ AGGREGATE (SUM / MIN / MAX / AVERAGE) usually be used with AS. Example: SELECT N
   
   
 2) For MySQL, when you wanna search by texts, DO NOT use "=" , use LIKE and '% <insert text> %' 
-SELECT * FROM table WHERE name = '%Thao%'
+SELECT * FROM table WHERE name LIKE '%Thao%'
+
+Or SELECT * FROM table WHERE name IN ('Thomas' , 'Thao' , 'Michael' ) #searching multiple strings
 if you wanna use "=" , you must indicate the table ( for example:   <table name>.name = "Thomas" ) 
+
+3) TIMESTAMP On SQL 
+SELECT TIMESTAMP ('2022-03-12' , '13:05:12') #convert string to timestamp to be selected
+In PostgreSQL, SELECT * FROM table.time WHERE time >= '2022-03-12' #u can be more direct
