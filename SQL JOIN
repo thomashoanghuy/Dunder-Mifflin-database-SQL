@@ -37,4 +37,23 @@ FROM cd.members mems # Note: here cd.members mems = giving an alias "mems" to ta
 JOIN cd.members recs # Note: here cd.members rec = giving an alias "recs" to the SAME table cd.members, but SQL would treat them as 2 separate LEFT and RIGHT table
 ON recs.memid = mems.recommendedby (# condition of the join, where "mems" table 's memid = "recs" table 's recommendedby id, even though both ids are on the same table)
 
+--# Concept: use 2 Join to join 3 different tables
+#3 tables, MEMBERS / FACILITIES / BOOKINGS ( MEMBERS table has member name & memid , BOOKINGS table has memid and facid , FACILITIES has facid and facility name
+#2 consecutive JOINs to join 3 tables: 
+#1st JOIN from MEMBERS join Bookings on condition that memids match 
+#2nd JOIN the above query result table with FACILITIES on condition facid match.
+#filter using WHERE facility name is TENNIS COURT
+Code: 
+SELECT DISTINCT cd.members.firstname AS member , cd.facilities.name AS facility 
+FROM cd.members
+
+	JOIN cd.bookings
+	ON cd.members.memid = cd.bookings.memid 
+	
+	JOIN cd.facilities
+	ON cd.bookings.facid = cd.facilities.facid
+WHERE cd.facilities.name LIKE '%Tennis Court%'
+
+
+
 
