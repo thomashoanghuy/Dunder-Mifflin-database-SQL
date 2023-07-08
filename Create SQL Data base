@@ -1,3 +1,6 @@
+#NOTE ALTER TABLE changes the table at structural levels: add in new column, add in foreign key , primary key, reference to other tables attributes.
+#UPDATE TABLE changes the tables at data level ( UPDATE table_name SET <1stcolumn_name> = Batman WHERE <2ndcolumn_name> = "Bruce Wayne" )
+
 CREATE TABLE employee(
     emp_id INT PRIMARY KEY,
     first_name VARCHAR(40),
